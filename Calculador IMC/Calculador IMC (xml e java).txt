@@ -1,0 +1,180 @@
+ARQUIVO xml
+---
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="52dp"
+        android:text="Calculador IMC"
+        android:textSize="45sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_calcularimc"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="48dp"
+        android:text="Calcular"
+        android:textSize="25sp"
+        app:backgroundTint="#B31717"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_altura" />
+
+    <EditText
+        android:id="@+id/edt_peso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:hint="Digite o Peso"
+        android:inputType="numberSigned"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/edt_altura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="48dp"
+        android:ems="10"
+        android:hint="Digite a Altura"
+        android:inputType="numberSigned"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_peso" />
+
+    <TextView
+        android:id="@+id/txt_valorimc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="48dp"
+        android:text="Valor IMC"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_calcularimc" />
+
+    <TextView
+        android:id="@+id/txt_classificacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="52dp"
+        android:text="Classificação"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_calcularimc" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+ARQUIVO Java
+---
+package com.example.calculadorIMC;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class MainActivity extends AppCompatActivity{
+
+	EditText valorPeso, valorAltura;
+	TextView campo_resultadoIMC, campo_classificacao;
+
+	float peso, altura, valorIMC;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState){
+	   super.onCreate(savedInstanceState);
+	   setContentView(R.layout.activity_main);
+
+	   valorPeso = findViewById(R.id.edt_peso);
+	   valorAltura = findViewById(R.id.edt_altura);
+	   campo_resultadoIMC = findViewById(R.id.txt_valorimc);
+	   campo_classificacao = findViewById(R.id.txt_classificacao);
+	   Button calcularIMC = findViewById(R.id.btn_calcularimc);
+
+	   calcularIMC.setOnClickListener(new View.OnClickListener(){
+	     @Override
+	     public void onClick(View view) {
+                calcular_imc();
+             }
+	   });
+	 }
+
+	public void calcular_imc(){
+	   String texto1 = valorPeso.getText().toString().trim();
+	   String texto2 = valorAltura.getText().toString().trim();
+
+	   if(texto1.isEmpty()){
+	     valorPeso.setError("Digite o peso");
+	     return;
+	   }
+	   if(texto2.isEmpty()){
+	     valorAltura.setError("Digite a altura");
+	     return;
+	   }
+
+	   try{
+	     peso = Float.parseFloat(valorPeso.getText().toString());
+	     altura = Float.parseFloat(valorAltura.getText().toString());
+	   }
+	   catch(NumberFormatException e){
+	     campo_resultadoIMC.setText("Número Inválido");
+	     return;
+	   }
+
+	   if(peso <= 0 || altura <= 0){
+	     campo_resultadoIMC.setText("Digite valores maiores que zero");
+	     return;
+	   }
+	  
+	   valorIMC = peso / (altura * altura);
+
+	   campo_resultadoIMC.setText("IMC: " + String.format("%.2f", valorIMC);
+
+
+	   if(valorIMC < 18.5){
+	     campo_classificacao.setText("Baixo peso");
+	   }
+	   else if(valorIMC >= 18.6 && valorIMC <= 24.9){
+	     campo_classificacao.setText("Peso Normal");
+	   }
+	   else if(valorIMC >= 25 && valorIMC <= 29.9){
+	     campo_classificacao.setText("Sobrepeso");
+	   }
+	   else if(valorIMC >= 30 && valorIMC <= 34.9){
+	     campo_classificacao.setText("Obesidade grau I");
+	   }
+	   else if(valorIMC >= 35 && valorIMC <=39.9){
+	     campo_classificacao.setText("Obesidade grau II");
+	   }
+	   else{
+	     campo_classificacao.setText("Obesidade grau III");
+	   }
+	}
+}
