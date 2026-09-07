@@ -1,0 +1,68 @@
+|Arquivo XML|
+---
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout 
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:context=".HomeActivity">
+
+<TextView
+    android:id="@+id/txt_titulo_home"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Tela Inicial"
+    android:textSize="32sp"
+    android:textStyle="bold"
+    android:textColor="@color/azul"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"/>
+
+<TextView
+    android:id="@+id/txt_recebe_email"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="40dp"
+    android:text="Bem Vindo!!"
+    android:textSize="24sp"
+    app:layout_constraintTop_toBottomOf="@+id/txt_titulo_home"
+    app:layout_constraintStart_toEndOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
+
+|Arquivo JAVA|
+---
+package com.example.navegacaotelas;
+
+import android.os.Bundle;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class HomeActivity extends AppCompatActivity {
+
+    TextView txtEmail;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
+
+        txtEmail = findViewById(R.id.txt_recebe_email);
+
+        String email = getIntent().getStringExtra("EMAIL");
+        txtEmail.setText(getString(R.string.bem_vindo) + " " + email);
+    }
+}
