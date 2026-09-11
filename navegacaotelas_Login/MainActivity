@@ -8,93 +8,85 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="24dp"
-    tools:context=".MainActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp"
+        tools:context=".MainActivity">
 
-<EditText
-    android:id="@+id/txt_recebe_email"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="40dp"
-    android:hint="Digite seu E-mail"
-    android:inputType="textEmailAddress"
-    app:layout_constraintTop_toBottomOf="@+id/txt_titulo"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        <EditText
+            android:id="@+id/txt_recebe_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:hint="Digite seu E-mail"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_titulo" />
 
-<Button
-    android:id="@+id/btn_login"
-    android:layout_width="199dp"
-    android:layout_height="49dp"
-    android:layout_marginStart="104dp"
-    android:layout_marginTop="56dp"
-    android:text="Entrar"
-    android:textSize="24sp"
-    app:backgroundTint="#096DAD"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/txt_senha" />
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="199dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="36dp"
+            android:text="Entrar"
+            android:textSize="24sp"
+            app:backgroundTint="#096DAD"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_senha" />
 
-<EditText
-    android:id="@+id/txt_senha"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:hint="Digite sua Senha"
-    android:inputType="textPassword"
-    app:layout_constraintTop_toBottomOf="@+id/txt_recebe_email"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        <EditText
+            android:id="@+id/txt_senha"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Digite sua Senha"
+            android:inputType="textPassword"
+            app:layout_constraintTop_toBottomOf="@+id/txt_recebe_email"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-<TextView
-    android:id="@+id/txt_cadastro"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="30dp"
-    android:text="Não possui um cadastro?"
-    android:textSize="16sp"
-    app:layout_constraintTop_toBottomOf="@+id/btn_login"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        <TextView
+            android:id="@+id/txt_cadastro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Não possui um cadastro?"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
-<TextView
-    android:id="@+id/txt_titulo"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:text="LOGIN"
-    android:textSize="32sp"
-    android:textStyle="bold"
-    android:textColor="@color/azul"
-    app:layout_constraintTop_toBottomOf="@+id/img_login" 
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
-       
-<ImageView
-    android:id="@+id/img_login"
-    android:layout_width="150dp"
-    android:layout_height="150dp"
-    android:layout_marginStart="132dp"
-    android:layout_marginTop="40dp"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:srcCompat="@drawable/icone_login" />
+        <TextView
+            android:id="@+id/txt_titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:text="LOGIN"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:backgroundTint="#096DAD"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_login" />
 
-<Button
-    android:id="@+id/btn_login"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="30dp"
-    android:text="Entrar"
-    android:backgroundTint="@color/azul"
-    app:layout_constraintTop_toBottomOf="@id/txt_senha"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        <ImageView
+            android:id="@+id/img_login"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icone_login" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 
 
@@ -113,29 +105,29 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-  TextView textoCadastro, 
-  EditText txtEmail;
-  Button btnLogin;
-    
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-      super.onCreate(savedInstanceState);
-      setContentView(R.layout.activity_main);
+    TextView textoCadastro;
+    EditText txtEmail;
+    Button btnLogin;
 
-      textoCadastro = findViewById(R.id.txt_cadastro);
-      btnLogin = findViewById(R.id.btn_login);
-      txtEmail = findViewById(R.id.txt_recebe_email);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-      textoCadastro.setOnClickListener(v -> {
-          Intent intentCadastro = new Intent(MainActivity.this,CadastroActivity.class);
-          startActivity(intentCadastro);
-      });
+        textoCadastro = findViewById(R.id.txt_cadastro);
+        btnLogin = findViewById(R.id.btn_login);
+        txtEmail = findViewById(R.id.txt_recebe_email);
 
-      btnLogin.setOnClickListener(v -> {
-	    String email = txtEmail.getText().toString();
-          Intent intentHome = new Intent(MainActivity.this,HomeActivity.class);
-          intentHome.putExtra("EMAIL",email);
-          startActivity(intentHome);
-      });
-  }
+        textoCadastro.setOnClickListener(v -> {
+            Intent intentCadastro = new Intent(MainActivity.this,CadastroActivity.class);
+            startActivity(intentCadastro);
+        });
+
+        btnLogin.setOnClickListener(v -> {
+            String email = txtEmail.getText().toString();
+            Intent intentHome = new Intent(MainActivity.this,HomeActivity.class);
+            intentHome.putExtra("EMAIL",email);
+            startActivity(intentHome);
+        });
+    }
 }
