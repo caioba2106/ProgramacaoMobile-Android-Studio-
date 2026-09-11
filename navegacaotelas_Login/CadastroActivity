@@ -1,99 +1,107 @@
 |XML|
 ---
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView 
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools
-    android:layout_width="match_parent"
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<androidx.constraintlayout.widget.ConstraintLayout 
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="24dp"
-    tools:context=".CadastroActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp"
+        tools:context=".CadastroActivity">
 
-<TextView
-    android:id="@+id/txt_titulo_cadastro"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Cadastro de Perfil"
-    android:textColor="#156871"
-    android:textSize="30sp"
-    android:textStyle="bold"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        <TextView
+            android:id="@+id/txt_titulo_cadastro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Cadastro de Perfil"
+            android:textColor="#156871"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-<EditText
-    android:id="@+id/edit_nome"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="40dp"
-    android:hint="Digite seu nome"
-    android:inputType="textPersonName"
-    app:layout_constraintTop_toBottomOf="@+id/txt_titulo_cadastro"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        <EditText
+            android:id="@+id/edit_nome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:hint="Digite seu nome"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_titulo_cadastro" />
 
-<EditText
-    android:id="@+id/edit_telefone"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:hint="Digite seu telefone"
-    android:inputType="phone"
-    app:layout_constraintTop_toBottomOf="@+id/edit_nome"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        <EditText
+            android:id="@+id/edit_telefone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:hint="Digite seu telefone"
+            android:inputType="phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_nome" />
 
-<EditText
-    android:id="@+id/edit_email"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:hint="Digite seu email"
-    android:inputType="textEmailAddress"
-    app:layout_constraintTop_toBottomOf="@+id/edit_telefone"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        <EditText
+            android:id="@+id/edit_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:hint="Digite seu email"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_telefone" />
 
-<EditText
-    android:id="@+id/edit_senha"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:hint="Digite sua senha"
-    android:inputType="textPassword"
-    app:layout_constraintTop_toBottomOf="@+id/edit_email"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        <EditText
+            android:id="@+id/edit_senha"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:hint="Digite sua senha"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_email" />
 
-<Button
-    android:id="@+id/btn_cadastrar"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="30dp"
-    android:text="Cadastrar"
-    android:backgroundTint="@color/verde"
-    app:layout_constraintTop_toBottomOf="@+id/edit_senha"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        <Button
+            android:id="@+id/btn_cadastrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:text="Cadastrar"
+            app:backgroundTint="#38B30E"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.636"
+            app:layout_constraintStart_toEndOf="@+id/btn_voltar"
+            app:layout_constraintTop_toBottomOf="@+id/edit_senha" />
 
-<Button
-    android:id="@+id/btn_voltar"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:text="Voltar"
-    app:layout_constraintTop_toBottomOf="@+id/btn_cadastrar"
-    app:layout_constraintStart_toEndOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        <Button
+            android:id="@+id/btn_voltar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="90dp"
+            android:text="Voltar"
+            app:backgroundTint="#C71206"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_senha" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 
 
@@ -110,28 +118,28 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class CadastroActivity extends AppCompatActivity {
 
-  EditText edt_nome, edt_telefone, edt_email, etd_senha;
-  Button btn_cadastrar, btn_voltar
+    EditText editNome, editTelefone, editEmail, editSenha;
+    Button btnCadastrar, btnVoltar;
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_cadastro);
-	
-	  editNome = findViewById(R.id.edt_nome);
-	  editTelefone = findViewById(R.id.edt_telefone);
-	  editEmail = findViewById(R.id.edt_email);
-	  editSenha = findViewById(R.id.edt_senha);
-	  btnCadastrar = findViewById(R.id.btn_cadastrar);
-	  btnVoltar = findViewById(R.id.btn_voltar);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_cadastro);
 
-	  btnCadastrar.setOnClickListener(v -> {
-		  String nome = editNome.getText().toString();
-		  Toast.makeText(CadastroActivity.this,"Cadastro realizado para: " + nome,Toast.LENGTH_SHORT).show();
-	  });
+        editNome = findViewById(R.id.edit_nome);
+        editTelefone = findViewById(R.id.edit_telefone);
+        editEmail = findViewById(R.id.edit_email);
+        editSenha = findViewById(R.id.edit_senha);
+        btnCadastrar = findViewById(R.id.btn_cadastrar);
+        btnVoltar = findViewById(R.id.btn_voltar);
 
-	  btnVoltar.setOnClickListener(v -> {
-		  finish();
-	  });
-  }
+        btnCadastrar.setOnClickListener(v -> {
+            String nome = editNome.getText().toString();
+            Toast.makeText(CadastroActivity.this,"Cadastro realizado para: " + nome,Toast.LENGTH_SHORT).show();
+        });
+
+        btnVoltar.setOnClickListener(v -> {
+            finish();
+        });
+    }
 }
