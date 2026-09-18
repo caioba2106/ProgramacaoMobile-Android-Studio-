@@ -1,0 +1,84 @@
+|MainActivity.java|
+---
+package com.example.streamflix;
+
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+public class MainActivity extends AppCompatActivity {
+
+    RecyclerView recyclerView;
+    int[] movies = {
+            R.drawable.movie1,
+            R.drawable.movie2,
+            R.drawable.movie3
+    };
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        recyclerView = findViewById(R.id.recyclerMovies);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        MovieAdapter adapter = new MovieAdapter(this, movies);
+        recyclerView.setAdapter(adapter);
+    }
+}
+
+
+
+|MovieAdapter.java|
+---
+package com.example.streamflix;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
+
+    private int[] movieImages;
+    private Context context;
+    public MovieAdapter(Context context, int[] movieImages) {
+
+        this.context = context;
+        this.movieImages = movieImages;
+    }
+    @NonNull
+    @Override
+
+    public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        View view = LayoutInflater.from(context).inflate(R.layout.item_movie, parent, false);
+        return new MovieViewHolder(view);
+    }
+    @Override
+
+    public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
+
+        holder.imgMovie.setImageResource(movieImages[position]);
+    }
+    @Override
+
+    public int getItemCount() {
+
+        return movieImages.length;
+    }
+
+    static class MovieViewHolder extends RecyclerView.ViewHolder {
+        ImageView imgMovie;
+
+        public MovieViewHolder(@NonNull View itemView) {
+
+            super(itemView);
+            imgMovie = itemView.findViewById(R.id.imgMovie);
+        }
+    }
+}
