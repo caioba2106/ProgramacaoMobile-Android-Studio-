@@ -1,0 +1,85 @@
+package com.example.testecalculadora;
+
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class CalculadoraActivity extends AppCompatActivity {
+
+    EditText numero1, numero2;
+    TextView campo_resultado;
+    float resultado, n1, n2;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_calculadora);
+
+        numero1 = findViewById(R.id.edt_numero1);
+        numero2 = findViewById(R.id.edt_numero2);
+        campo_resultado = findViewById(R.id.txt_resultado);
+        Button somar = findViewById(R.id.btn_somar);
+        Button subtrair = findViewById(R.id.btn_subtrair);
+        Button multiplicar = findViewById(R.id.btn_multiplicar);
+        Button dividir = findViewById(R.id.btn_dividir);
+
+        somar.setOnClickListener(v -> calcular("+"));
+        subtrair.setOnClickListener(v -> calcular("-"));
+        multiplicar.setOnClickListener(v -> calcular("*"));
+        dividir.setOnClickListener(v -> calcular("/"));
+    }
+
+    public void calcular(String operacao) {
+        String texto1 = numero1.getText().toString().trim();
+        String texto2 = numero2.getText().toString().trim();
+
+        if(texto1.isEmpty()){
+            numero1.setError("Digite um número obrigatório");
+            return;
+        }
+        if(texto2.isEmpty()){
+            numero2.setError("Digite um número obrigatório");
+            return;
+        }
+
+        try{
+            n1 = Float.parseFloat(numero1.getText().toString());
+            n2 = Float.parseFloat(numero2.getText().toString());
+        }
+        catch(NumberFormatException e){
+            campo_resultado.setText("Número Inválido");
+            return;
+        }
+
+        switch(operacao){
+            case "+":
+                resultado = n1 + n2;
+                break;
+
+            case "-":
+                resultado = n1 - n2;
+                break;
+
+            case "*":
+                resultado = n1 * n2;
+                break;
+
+            case "/":
+                if(n2 == 0){
+                    Toast.makeText(this, "Erro: Não é permitido dividir por 0", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    resultado = n1 / n2;
+                    break;
+                }
+            default:
+                campo_resultado.setText("Operação Inválida");
+                break;
+        }
+        campo_resultado.setText("Resultado = "+resultado);
+    }
+}
