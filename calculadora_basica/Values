@@ -1,0 +1,15 @@
+|themes.xml|
+---
+
+
+|colors.xml|
+---
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="cor_primaria">#0028b3</color>
+    <color name="cor_primaria_icones">#FFFFFFFF</color>
+    <color name="cor_background">#494c4e</color>
+    <color name="cor_texto_primario">#FFFFFF</color>
+    <color name="cor_texto_resultado">#B3B3B3</color>
+    <color name="cor_botões">#0028b3</color>
+</resources>
