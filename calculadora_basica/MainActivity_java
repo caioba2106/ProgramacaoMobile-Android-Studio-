@@ -1,85 +1,82 @@
-package com.example.projecaocalculadorameuproprio;
+ package com.example.testecalculadora;
 
+import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText numero1, numero2;
-    TextView campo_resultado;
-    float resultado, n1, n2;
+    EditText campoNome, campoSenha;
+    Button btnCadastrar, btnEntrar;
+    SharedPreferences preferencias;
+
+    private static final String PREF_NAME = "DadosLogin";
+    private static final String CHAVE_NOME = "nome_usuario";
+    private static final String CHAVE_SENHA = "senha_usuario";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        numero1 = findViewById(R.id.edt_numero1);
-        numero2 = findViewById(R.id.edt_numero2);
-        campo_resultado = findViewById(R.id.txt_resultado);
-        Button somar = findViewById(R.id.btn_somar);
-        Button subtrair = findViewById(R.id.btn_subtrair);
-        Button multiplicar = findViewById(R.id.btn_multiplicar);
-        Button dividir = findViewById(R.id.btn_dividir);
+        campoNome = findViewById(R.id.edt_login_nome);
+        campoSenha = findViewById(R.id.edt_login_senha);
+        btnCadastrar = findViewById(R.id.btn_cadastrar);
+        btnEntrar = findViewById(R.id.btn_entrar);
 
-        somar.setOnClickListener(v -> calcular("+"));
-        subtrair.setOnClickListener(v -> calcular("-"));
-        multiplicar.setOnClickListener(v -> calcular("*"));
-        dividir.setOnClickListener(v -> calcular("/"));
+        preferencias = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+
+        btnCadastrar.setOnClickListener(v -> cadastrar());
+        btnEntrar.setOnClickListener(v -> entrar());
     }
 
-    public void calcular(String operacao) {
-        String texto1 = numero1.getText().toString().trim();
-        String texto2 = numero2.getText().toString().trim();
+    private void cadastrar() {
 
-        if(texto1.isEmpty()){
-            numero1.setError("Digite um número obrigatório");
-            return;
-        }
-        if(texto2.isEmpty()){
-            numero2.setError("Digite um número obrigatório");
+        String nome = campoNome.getText().toString().trim();
+        String senha = campoSenha.getText().toString().trim();
+
+        if (nome.isEmpty() || senha.isEmpty()) {
+            Toast.makeText(this, "Preencha o nome e a senha", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        try{
-            n1 = Float.parseFloat(numero1.getText().toString());
-            n2 = Float.parseFloat(numero2.getText().toString());
-        }
-        catch(NumberFormatException e){
-            campo_resultado.setText("Número Inválido");
+        preferencias.edit()
+                .putString(CHAVE_NOME, nome)
+                .putString(CHAVE_SENHA, senha)
+                .apply();
+
+        Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
+        campoSenha.setText("");
+    }
+
+    private void entrar() {
+
+        String nome = campoNome.getText().toString().trim();
+        String senha = campoSenha.getText().toString().trim();
+
+        String nomeSalvo = preferencias.getString(CHAVE_NOME, "");
+        String senhaSalva = preferencias.getString(CHAVE_SENHA, "");
+
+        if (nome.isEmpty() || senha.isEmpty()) {
+            Toast.makeText(this, "Digite o nome e a senha", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        switch(operacao){
-            case "+":
-                resultado = n1 + n2;
-                break;
+        if (nome.equals(nomeSalvo) && senha.equals(senhaSalva) && !nomeSalvo.isEmpty()) {
+            Toast.makeText(this, "Login realizado com sucesso!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, CalculadoraActivity.class);
+            startActivity(intent);
+            finish();
 
-            case "-":
-                resultado = n1 - n2;
-                break;
-
-            case "*":
-                resultado = n1 * n2;
-                break;
-
-            case "/":
-                if(n2 == 0){
-                    Toast.makeText(this, "Erro: Não é permitido dividir por 0", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    resultado = n1 / n2;
-                    break;
-                }
-            default:
-                campo_resultado.setText("Operação Inválida");
-                break;
         }
-        campo_resultado.setText("Resultado = "+resultado);
+
+        else {
+            Toast.makeText(this, "Nome ou senha incorretos", Toast.LENGTH_SHORT).show();
+        }
     }
 }
