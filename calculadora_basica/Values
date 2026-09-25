@@ -2,11 +2,11 @@
 ---
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.ProjecaoCalculadoraMeuProprio" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.TesteCalculadora" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/cor_primaria</item>
     </style>
 
-    <style name="Theme.ProjecaoCalculadoraMeuProprio" parent="Base.Theme.ProjecaoCalculadoraMeuProprio" />
+    <style name="Theme.TesteCalculadora" parent="Base.Theme.TesteCalculadora" />
 </resources>
 
 
