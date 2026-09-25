@@ -1,4 +1,4 @@
-package com.example.calculadorabasica;
+package com.example.projecaocalculadorameuproprio;
 
 import android.os.Bundle;
 import android.widget.Button;
