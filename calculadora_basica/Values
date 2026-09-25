@@ -1,5 +1,14 @@
 |themes.xml|
 ---
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ProjecaoCalculadoraMeuProprio" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/cor_primaria</item>
+    </style>
+
+    <style name="Theme.ProjecaoCalculadoraMeuProprio" parent="Base.Theme.ProjecaoCalculadoraMeuProprio" />
+</resources>
+
 
 
 |colors.xml|
@@ -7,9 +16,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="cor_primaria">#0028b3</color>
-    <color name="cor_primaria_icones">#FFFFFFFF</color>
-    <color name="cor_background">#494c4e</color>
-    <color name="cor_texto_primario">#FFFFFF</color>
-    <color name="cor_texto_resultado">#B3B3B3</color>
-    <color name="cor_botões">#0028b3</color>
+    <color name="cor_fundo">#141414</color>
+    <color name="cor_textos">#FFFFFF</color>
+    <color name="cor_texto_hint">#908C8C</color>
+    <color name="cor_botões">#091D61</color>
+    <color name="cor_botões_texto">#FFFFFF</color>
+    <color name="cor_botão_cadastro">#269426</color>
+</resources>
+
+
+
+|strings.xml|
+---
+<resources>
+    <string name="app_name">Calculadora Básica</string>
+    <string name="titulo_principal">Calculadora Básica</string>
+    <string name="numero1_hint">Digite o número 1</string>
+    <string name="numero2_hint">Digite o número 2</string>
+    <string name="resultado_final">Resultado</string>
+    <string name="somar">+</string>
+    <string name="subtrair">-</string>
+    <string name="multiplicar">X</string>
+    <string name="dividir">/</string>
+    <string name="titulo_login">Login</string>
 </resources>
