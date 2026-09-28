@@ -1,0 +1,20 @@
+|strings.xml|
+---
+<resources>
+    <string name="titulo_login">Login</string>
+    <string name="titulo_calculadora_notas">Calculadora de Notas</string>
+</resources>
+
+
+
+|colors.xml|
+---
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="cor_primaria">#0028b3</color>
+    <color name="cor_texto_login">#000000</color>
+    <color name="cor_texto_hint">#545353</color>
+    <color name="cor_botões">#091D61</color>
+    <color name="cor_texto_botoesDentro">#FFFFFF</color>
+    <color name="cor_botão_cadastro">#269426</color>
+</resources>
