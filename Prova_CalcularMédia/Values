@@ -1,6 +1,7 @@
 |strings.xml|
 ---
 <resources>
+    <string name="app_name">Calculo Nota</string>
     <string name="titulo_login">Login</string>
     <string name="titulo_calculadora_notas">Calculadora de Notas</string>
 </resources>
