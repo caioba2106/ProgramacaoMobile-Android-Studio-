@@ -1,0 +1,81 @@
+package com.example.calculonotamedia;
+
+import android.content.SharedPreferences;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText campoNome, campoSenha;
+    Button btnCadastrar, btnEntrar;
+    SharedPreferences preferencias;
+
+    private static final String PREF_NAME = "DadosLogin";
+    private static final String CHAVE_NOME = "nome_usuario";
+    private static final String CHAVE_SENHA = "senha_usuario";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        campoNome = findViewById(R.id.edt_login_nome);
+        campoSenha = findViewById(R.id.edt_login_senha);
+        btnCadastrar = findViewById(R.id.btn_cadastrar);
+        btnEntrar = findViewById(R.id.btn_entrar);
+
+        preferencias = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+
+        btnCadastrar.setOnClickListener(v -> cadastrar());
+        btnEntrar.setOnClickListener(v -> entrar());
+    }
+
+    private void cadastrar() {
+
+        String nome = campoNome.getText().toString().trim();
+        String senha = campoSenha.getText().toString().trim();
+
+        if (nome.isEmpty() || senha.isEmpty()) {
+            Toast.makeText(this, "Preencha o nome e a senha", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        preferencias.edit()
+                .putString(CHAVE_NOME, nome)
+                .putString(CHAVE_SENHA, senha)
+                .apply();
+
+        Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
+        campoSenha.setText("");
+    }
+
+    private void entrar() {
+
+        String nome = campoNome.getText().toString().trim();
+        String senha = campoSenha.getText().toString().trim();
+
+        String nomeSalvo = preferencias.getString(CHAVE_NOME, "");
+        String senhaSalva = preferencias.getString(CHAVE_SENHA, "");
+
+        if (nome.isEmpty() || senha.isEmpty()) {
+            Toast.makeText(this, "Digite o nome e a senha", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (nome.equals(nomeSalvo) && senha.equals(senhaSalva) && !nomeSalvo.isEmpty()) {
+            Toast.makeText(this, "Login realizado com sucesso!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, CalculomediaActivity.class);
+            startActivity(intent);
+            finish();
+
+        }
+
+        else {
+            Toast.makeText(this, "Nome ou senha incorretos", Toast.LENGTH_SHORT).show();
+        }
+    }
+}
