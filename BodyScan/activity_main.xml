@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#F5F5F5">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,112 +16,50 @@
             android:text="BodyScan"
             android:textSize="32sp"
             android:textStyle="bold"
-            android:textColor="#4935A5"
-            android:layout_marginTop="20dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Avaliação Corporal"
-            android:textSize="18sp"
-            android:textColor="#555555"
-            android:layout_marginBottom="25dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Fotografia Frontal"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="10dp"/>
-
-        <ImageView
-            android:id="@+id/img_frontal"
-            android:layout_width="220dp"
-            android:layout_height="220dp"
-            android:background="#DDDDDD"
-            android:scaleType="centerCrop"
-            android:contentDescription="Foto frontal do corpo"/>
-
-        <Button
-            android:id="@+id/btn_foto_frontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tirar Foto Frontal"
-            android:layout_marginTop="10dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Fotografia Lateral"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="10dp"/>
-
-        <ImageView
-            android:id="@+id/img_lateral"
-            android:layout_width="220dp"
-            android:layout_height="220dp"
-            android:background="#DDDDDD"
-            android:scaleType="centerCrop"
-            android:contentDescription="Foto lateral do corpo"/>
-
-        <Button
-            android:id="@+id/btn_foto_lateral"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tirar Foto Lateral"
-            android:layout_marginTop="10dp"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#CCCCCC"
-            android:layout_marginTop="25dp"
             android:layout_marginBottom="20dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dados Corporais"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="#4935A5"/>
 
         <EditText
             android:id="@+id/edt_peso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Peso em kg"
-            android:inputType="numberDecimal"
-            android:layout_marginTop="15dp"/>
+            android:inputType="numberDecimal"/>
 
         <EditText
             android:id="@+id/edt_altura"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Altura em metros (ex: 1,75)"
+            android:hint="Altura em metros"
             android:inputType="numberDecimal"/>
 
         <Button
-            android:id="@+id/btn_avaliar"
+            android:id="@+id/btn_calcular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Calcular IMC"
-            android:layout_marginTop="20dp"/>
+            android:text="Calcular IMC"/>
 
         <TextView
             android:id="@+id/txt_resultado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Seu resultado aparecerá aqui."
+            android:text="Resultado do IMC"
             android:textSize="18sp"
-            android:textColor="#222222"
             android:gravity="center"
-            android:padding="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="25dp"/>
+            android:padding="12dp"/>
+
+        <Button
+            android:id="@+id/btn_camera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tirar fotografia"/>
+
+        <ImageView
+            android:id="@+id/img_corpo"
+            android:layout_width="250dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="15dp"
+            android:scaleType="fitCenter"
+            android:contentDescription="Fotografia corporal"/>
 
     </LinearLayout>
 </ScrollView>
