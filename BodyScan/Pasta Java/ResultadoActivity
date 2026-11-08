@@ -1,0 +1,58 @@
+
+package com.example.bodyscan;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class ResultadoActivity extends AppCompatActivity {
+
+    ImageView imagemResultado;
+    TextView txtGordura;
+    TextView txtMuscular;
+    TextView txtMassaMagra;
+    TextView txtIMC;
+    TextView txtPeso;
+    Button btnVoltar;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_resultado);
+
+        imagemResultado = findViewById(R.id.imagem_resultado);
+        txtGordura = findViewById(R.id.txt_gordura);
+        txtMuscular = findViewById(R.id.txt_muscular);
+        txtMassaMagra = findViewById(R.id.txt_massa_magra);
+        txtIMC = findViewById(R.id.txt_imc);
+        txtPeso = findViewById(R.id.txt_peso);
+        btnVoltar = findViewById(R.id.btn_voltar);
+
+        byte[] foto = getIntent().getByteArrayExtra("foto");
+
+        if (foto != null) {
+
+            Bitmap bitmap = BitmapFactory.decodeByteArray(
+                    foto, 0, foto.length);
+
+            imagemResultado.setImageBitmap(bitmap);
+        }
+
+        // Valores demonstrativos, não calculados pela foto
+
+        txtGordura.setText("22%");
+        txtMuscular.setText("38%");
+        txtMassaMagra.setText("60,0 kg");
+        txtIMC.setText("23,5");
+        txtPeso.setText("75,0 kg");
+
+        btnVoltar.setOnClickListener(v -> {
+            finish();
+        });
+    }
+}
