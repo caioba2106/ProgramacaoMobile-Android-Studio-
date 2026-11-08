@@ -37,13 +37,9 @@ public class ResultadoActivity extends AppCompatActivity {
 
         if (foto != null) {
 
-            Bitmap bitmap = BitmapFactory.decodeByteArray(
-                    foto, 0, foto.length);
-
+            Bitmap bitmap = BitmapFactory.decodeByteArray(foto, 0, foto.length);
             imagemResultado.setImageBitmap(bitmap);
         }
-
-        // Valores demonstrativos, não calculados pela foto
 
         txtGordura.setText("22%");
         txtMuscular.setText("38%");
