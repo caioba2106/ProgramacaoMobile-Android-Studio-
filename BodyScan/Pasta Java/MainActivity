@@ -36,22 +36,19 @@ public class MainActivity extends AppCompatActivity {
 
         if (camera.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(camera, 1);
-        } else {
-            Toast.makeText(this,
-                    "Câmera não encontrada!",
-                    Toast.LENGTH_SHORT).show();
+        }
+
+        else {
+            Toast.makeText(this,"Câmera não encontrada!",Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
-    protected void onActivityResult(int requestCode,
-                                    int resultCode,
-                                    @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 1 && resultCode == RESULT_OK
-                && data != null) {
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
 
             Bundle extras = data.getExtras();
 
@@ -63,17 +60,13 @@ public class MainActivity extends AppCompatActivity {
 
                     imagemCorpo.setImageBitmap(foto);
 
-                    ByteArrayOutputStream stream =
-                            new ByteArrayOutputStream();
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
 
-                    foto.compress(Bitmap.CompressFormat.JPEG,
-                            80, stream);
+                    foto.compress(Bitmap.CompressFormat.JPEG, 80, stream);
 
                     byte[] fotoBytes = stream.toByteArray();
 
-                    Intent tela = new Intent(
-                            MainActivity.this,
-                            ProcessamentoActivity.class);
+                    Intent tela = new Intent(MainActivity.this, ProcessamentoActivity.class);
 
                     tela.putExtra("foto", fotoBytes);
 
@@ -81,10 +74,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-        } else {
-            Toast.makeText(this,
-                    "Foto não capturada!",
-                    Toast.LENGTH_SHORT).show();
+        } 
+
+        else {
+            Toast.makeText(this, "Foto não capturada!", Toast.LENGTH_SHORT).show();
         }
     }
 }
