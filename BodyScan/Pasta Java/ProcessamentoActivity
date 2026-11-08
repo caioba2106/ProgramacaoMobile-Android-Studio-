@@ -33,9 +33,7 @@ public class ProcessamentoActivity extends AppCompatActivity {
 
             progresso.setProgress(100);
 
-            Intent tela = new Intent(
-                    ProcessamentoActivity.this,
-                    ResultadoActivity.class);
+            Intent tela = new Intent(ProcessamentoActivity.this, ResultadoActivity.class);
 
             tela.putExtra("foto", foto);
 
