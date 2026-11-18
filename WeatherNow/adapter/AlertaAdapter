@@ -1,0 +1,60 @@
+package com.example.weathernow.adapter;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import com.example.weathernow.R;
+import com.example.weathernow.model.Alerta;
+import com.google.android.material.switchmaterial.SwitchMaterial;
+import java.util.List;
+
+public class AlertaAdapter extends RecyclerView.Adapter<AlertaAdapter.AlertaViewHolder> {
+
+    private final List<Alerta> listaAlertas;
+
+    public AlertaAdapter(List<Alerta> listaAlertas) {
+        this.listaAlertas = listaAlertas;
+    }
+
+    @NonNull
+    @Override
+    public AlertaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_alerta, parent, false);
+        return new AlertaViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull AlertaViewHolder holder, int position) {
+        Alerta alerta = listaAlertas.get(position);
+        holder.txtTitulo.setText(alerta.getTitulo());
+        holder.txtCidade.setText(alerta.getCidade());
+        holder.txtDetalhes.setText("💧 ≥ " + alerta.getChanceChuva() + "%     🕒 " + alerta.getAntecedencia());
+        holder.switchAlerta.setChecked(alerta.isAtivo());
+
+        holder.switchAlerta.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            alerta.setAtivo(isChecked);
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return listaAlertas.size();
+    }
+
+    static class AlertaViewHolder extends RecyclerView.ViewHolder {
+        TextView txtTitulo, txtCidade, txtDetalhes;
+        SwitchMaterial switchAlerta;
+
+        public AlertaViewHolder(@NonNull View itemView) {
+            super(itemView);
+            txtTitulo = itemView.findViewById(R.id.txt_titulo);
+            txtCidade = itemView.findViewById(R.id.txt_cidade);
+            txtDetalhes = itemView.findViewById(R.id.txt_detalhes);
+            switchAlerta = itemView.findViewById(R.id.switch_alerta);
+        }
+    }
+}
