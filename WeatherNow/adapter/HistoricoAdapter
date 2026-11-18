@@ -1,0 +1,59 @@
+package com.example.weathernow.adapter;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import com.example.weathernow.R;
+import com.example.weathernow.model.HistoricoModel;
+import java.util.List;
+
+public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.HistoricoViewHolder> {
+
+    private final List<HistoricoModel> listaHistorico;
+
+    public HistoricoAdapter(List<HistoricoModel> listaHistorico) {
+        this.listaHistorico = listaHistorico;
+    }
+
+    @NonNull
+    @Override
+    public HistoricoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_historico, parent, false);
+        return new HistoricoViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull HistoricoViewHolder holder, int position) {
+        HistoricoModel item = listaHistorico.get(position);
+        
+        holder.txtData.setText(item.getDataSecao());
+        holder.txtHora.setText(item.getHora());
+        holder.txtStatus.setText(item.getStatusEnvio());
+        holder.txtLocal.setText(item.getLocal());
+        holder.txtProb.setText("💧 " + item.getProbabilidade() + "%");
+        holder.txtAntecedencia.setText("🕒 " + item.getAntecedencia());
+    }
+
+    @Override
+    public int getItemCount() {
+        return listaHistorico.size();
+    }
+
+    static class HistoricoViewHolder extends RecyclerView.ViewHolder {
+        TextView txtData, txtHora, txtStatus, txtLocal, txtProb, txtAntecedencia;
+
+        public HistoricoViewHolder(@NonNull View itemView) {
+            super(itemView);
+            txtData = itemView.findViewById(R.id.txt_data_seccao);
+            txtHora = itemView.findViewById(R.id.txt_hora);
+            txtStatus = itemView.findViewById(R.id.txt_status_envio);
+            txtLocal = itemView.findViewById(R.id.txt_local_historico);
+            txtProb = itemView.findViewById(R.id.txt_prob_historico);
+            txtAntecedencia = itemView.findViewById(R.id.txt_antecedencia_historico);
+        }
+    }
+}
