@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/bg_dark_primary">
 
-    <!-- Cabeçalho da Tela -->
     <TextView
         android:id="@+id/txt_titulo_mapa"
         android:layout_width="wrap_content"
@@ -20,29 +19,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Simulação do container do mapa (Aqui você pode integrar o GoogleMap posteriormente) -->
-    <FrameLayout
-        android:id="@+id/map_container"
+    <!-- Google Maps Fragment -->
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:background="#1E293B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_titulo_mapa">
+        app:layout_constraintTop_toBottomOf="@id/txt_titulo_mapa" />
 
-        <!-- Imagem ou visualização de radar fictícia/estatística -->
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:alpha="0.4"
-            android:src="@drawable/ic_map" />
-
-    </FrameLayout>
-
-    <!-- Cartão Flutuante do Radar (Inferior) -->
+    <!-- Cartão Flutuante do Radar (Mantido igual) -->
     <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -64,8 +53,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -76,14 +65,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Chuva prevista"
+                        text="Chuva prevista"
                         android:textColor="@color/text_secondary"
                         android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Hoje, 17:00"
+                        text="Hoje, 17:00"
                         android:textColor="@color/text_primary"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -92,52 +81,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="💧 60%"
+                    text="💧 60%"
                     android:textColor="@color/accent_blue_light"
                     android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <!-- Legenda de cores do radar (Fraco, Moderado, Forte) -->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="6dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/gradient_radar_bar" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Fraco"
-                    android:textColor="@color/text_muted"
-                    android:textSize="10sp" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Moderado"
-                    android:textColor="@color/text_muted"
-                    android:textSize="10sp" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="end"
-                    android:text="Forte"
-                    android:textColor="@color/text_muted"
-                    android:textSize="10sp" />
-            </LinearLayout>
-
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
