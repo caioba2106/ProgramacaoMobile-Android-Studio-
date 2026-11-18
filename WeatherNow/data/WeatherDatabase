@@ -1,0 +1,25 @@
+package com.example.weathernow.data;
+
+import android.content.Context;
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
+
+@Database(entities = {AlertaEntity.class}, version = 1)
+public abstract class WeatherDatabase extends RoomDatabase {
+
+    private static WeatherDatabase instancia;
+
+    public abstract AlertaDao alertaDao();
+
+    public static synchronized WeatherDatabase obterInstancia(Context context) {
+        if (instancia == null) {
+            instancia = Room.databaseBuilder(
+                    context.getApplicationContext(),
+                    WeatherDatabase.class,
+                    "weather_database"
+            ).allowMainThreadQueries().build(); // Nota: Para produção ideal, use Coroutines/Threads, mas em Java puro facilita a chamada inicial.
+        }
+        return instancia;
+    }
+}
