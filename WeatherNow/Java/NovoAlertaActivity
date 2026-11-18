@@ -1,0 +1,63 @@
+package com.example.weathernow;
+
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class NovoAlertaActivity extends AppCompatActivity {
+
+    private TextView txtPorcentagem, txtDescricaoChance;
+    private SeekBar seekBarChance;
+    private int chanceSelecionada = 60;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_novo_alerta);
+
+        txtPorcentagem = findViewById(R.id.txt_porcentagem);
+        txtDescricaoChance = findViewById(R.id.txt_descricao_chance);
+        seekBarChance = findViewById(R.id.seekbar_chance);
+        Button btnSalvar = findViewById(R.id.btn_salvar_alerta);
+
+        // Atualiza texto conforme o usuário arrasta a barra
+        seekBarChance.setProgress(chanceSelecionada);
+        atualizarTextoChance(chanceSelecionada);
+
+        seekBarChance.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                chanceSelecionada = progress;
+                atualizarTextoChance(progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+
+        // Exemplo para botão de atalho 60%
+        findViewById(R.id.btn_60).setOnClickListener(v -> {
+            seekBarChance.setProgress(60);
+        });
+
+        // Fechar tela no ícone X
+        findViewById(R.id.btn_fechar).setOnClickListener(v -> finish());
+
+        // Salvar alerta
+        btnSalvar.setOnClickListener(v -> {
+            Toast.makeText(this, "Alerta salvo para chance ≥ " + chanceSelecionada + "%", Toast.LENGTH_SHORT).show();
+            finish();
+        });
+    }
+
+    private void atualizarTextoChance(int valor) {
+        txtPorcentagem.setText(valor + "%");
+        txtDescricaoChance.setText("Você será avisado quando a chance de chuva for igual ou maior que " + valor + "%.");
+    }
+}
