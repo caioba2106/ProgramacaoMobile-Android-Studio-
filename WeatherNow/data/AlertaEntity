@@ -1,0 +1,34 @@
+package com.example.weathernow.data;
+
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "tabela_alertas")
+public class AlertaEntity {
+
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+    private String titulo;
+    private String cidade;
+    private int chanceChuva;
+    private String antecedencia;
+    private boolean ativo;
+
+    public AlertaEntity(String titulo, String cidade, int chanceChuva, String antecedencia, boolean ativo) {
+        this.titulo = titulo;
+        this.cidade = cidade;
+        this.chanceChuva = chanceChuva;
+        this.antecedencia = antecedencia;
+        this.ativo = ativo;
+    }
+
+    // Getters e Setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    public String getTitulo() { return titulo; }
+    public String getCidade() { return cidade; }
+    public int getChanceChuva() { return chanceChuva; }
+    public String getAntecedencia() { return antecedencia; }
+    public boolean isAtivo() { return ativo; }
+    public void setAtivo(boolean ativo) { this.ativo = ativo; }
+}
