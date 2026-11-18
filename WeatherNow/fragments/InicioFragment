@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -13,9 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.weathernow.NovoAlertaActivity;
 import com.example.weathernow.R;
 import com.example.weathernow.adapter.AlertaAdapter;
+import com.example.weathernow.api.ClimaResponse;
+import com.example.weathernow.api.RetrofitClient;
 import com.example.weathernow.model.Alerta;
 import java.util.ArrayList;
 import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class InicioFragment extends Fragment {
 
@@ -27,7 +33,6 @@ public class InicioFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_alertas);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Dados iniciais idênticos ao protótipo
         List<Alerta> alertas = new ArrayList<>();
         alertas.add(new Alerta("Casa", "Indaiatuba - SP", 50, "1h antes", true));
         alertas.add(new Alerta("Trabalho", "Indaiatuba - SP", 40, "2h antes", true));
@@ -36,12 +41,34 @@ public class InicioFragment extends Fragment {
         AlertaAdapter adapter = new AlertaAdapter(alertas);
         recyclerView.setAdapter(adapter);
 
-        // Botão "+ Adicionar mais alertas"
+        buscarClimaReal();
+        
         view.findViewById(R.id.btn_adicionar_alerta).setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), NovoAlertaActivity.class);
             startActivity(intent);
         });
 
         return view;
+    }
+
+    private void buscarClimaReal(){
+        RetrofitClient.obterServico().obterPrevisao(-23.09, -47.21, true)
+            .enqueue(new Callback<ClimaResponse>(){
+
+            @Override
+            public void onResponse(Call<ClimaResponse> call, Response<ClimaResponse> response){
+                if(response.isSuccessful() && response.body() != null){
+                    ClimaResponse.CurrentWeather clima = response.body().getCurrentWeather();
+                    double temperatura = clima.getTemperature();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ClimaResponse> call, Throwable t){
+                if(getContext() != null){
+                    Toast.makeText(getContext(), "Erro ao carregar clima da API", Toast.LENGHT_SHORT).show();
+                }
+            }
+        });
     }
 }
