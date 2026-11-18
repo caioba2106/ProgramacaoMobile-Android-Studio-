@@ -1,0 +1,50 @@
+package com.example.weathernow;
+
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import com.example.weathernow.fragments.InicioFragment;
+import com.example.weathernow.fragments.MapaFragment;
+import com.example.weathernow.fragments.HistoricoFragment;
+import com.example.weathernow.fragments.ConfiguracoesFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+
+        // Carrega a tela inicial por padrão
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new InicioFragment())
+                    .commit();
+        }
+
+        bottomNav.setOnItemSelectedListener(item -> {
+            Fragment selectedFragment = null;
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.nav_inicio) {
+                selectedFragment = new InicioFragment();
+            } else if (itemId == R.id.nav_mapa) {
+                selectedFragment = new MapaFragment();
+            } else if (itemId == R.id.nav_historico) {
+                selectedFragment = new HistoricoFragment();
+            } else if (itemId == R.id.nav_configuracoes) {
+                selectedFragment = new ConfiguracoesFragment();
+            }
+
+            if (selectedFragment != null) {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, selectedFragment)
+                        .commit();
+            }
+            return true;
+        });
+    }
+}
