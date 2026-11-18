@@ -1,0 +1,5 @@
+(Nota: Lembre-se de adicionar a sua Google Maps API Key no arquivo AndroidManifest.xml dentro da tag <application>):
+
+<meta-data
+    android:name="com.google.android.geo.API_KEY"
+    android:value="SUA_CHAVE_DE_API_AQUI"/>
