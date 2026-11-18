@@ -1,0 +1,28 @@
+package com.example.weathernow.api;
+
+import com.google.gson.annotations.SerializedName;
+
+public class ClimaResponse {
+
+    @SerializedName("current_weather")
+    private CurrentWeather currentWeather;
+
+    public CurrentWeather getCurrentWeather() {
+        return currentWeather;
+    }
+
+    public static class CurrentWeather {
+        @SerializedName("temperature")
+        private double temperature;
+
+        @SerializedName("weathercode")
+        private int weatherCode;
+
+        @SerializedName("windspeed")
+        private double windSpeed;
+
+        public double getTemperature() { return temperature; }
+        public int getWeatherCode() { return weatherCode; }
+        public double getWindSpeed() { return windSpeed; }
+    }
+}
