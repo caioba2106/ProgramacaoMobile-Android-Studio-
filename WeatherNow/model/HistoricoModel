@@ -1,0 +1,26 @@
+package com.example.weathernow.model;
+
+public class HistoricoModel {
+    private String dataSecao; 
+    private String hora;
+    private String statusEnvio;
+    private String local;
+    private int probabilidade;
+    private String antecedencia;
+
+    public HistoricoModel(String dataSecao, String hora, String statusEnvio, String local, int probabilidade, String antecedencia) {
+        this.dataSecao = dataSecao;
+        this.hora = hora;
+        this.statusEnvio = statusEnvio;
+        this.local = local;
+        this.probabilidade = probabilidade;
+        this.antecedencia = antecedencia;
+    }
+
+    public String getDataSecao() { return dataSecao; }
+    public String getHora() { return hora; }
+    public String getStatusEnvio() { return statusEnvio; }
+    public String getLocal() { return local; }
+    public int getProbabilidade() { return probabilidade; }
+    public String getAntecedencia() { return antecedencia; }
+}
